@@ -1,6 +1,7 @@
 import connectDb from '@/libs/connectDb'
 import Company from '@/models/company'
-import { NextResponse, NextRequest } from 'next/server'
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
 
 interface Params {
 	id: string
