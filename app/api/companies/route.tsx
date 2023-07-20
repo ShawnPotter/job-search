@@ -1,11 +1,10 @@
 import connectDb from '@/libs/connectDb'
 import Company from '@/models/company'
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
 
-export const config = {
-	runtime: 'edge', // this is a pre-requisite
-	regions: ['pdx1'], // only execute this function on pdx1
-}
+export const runtime = 'edge'
+export const preferredRegion = 'pdx1'
 
 export async function GET() {
 	await connectDb()
