@@ -11,7 +11,7 @@ interface ICompany {
 
 const getCompanies = async () => {
 	try {
-		const res = await fetch('http://localhost:3000/api/companies', {
+		const res = await fetch(`${process.env.API_URL}/api/companies`, {
 			cache: 'no-store',
 		})
 		if (!res.ok) {

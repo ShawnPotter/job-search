@@ -17,7 +17,7 @@ function RemoveButton({ id }: RemoveButtonProps) {
 	const deleteCompany = async () => {
 		const confirmed = confirm('Delete Company?')
 		if (confirmed) {
-			await fetch(`http://localhost:3000/api/companies?id=${id}`, {
+			await fetch(`${process.env.API_URL}/api/companies?id=${id}`, {
 				method: 'DELETE',
 			})
 			handleHardRefresh()

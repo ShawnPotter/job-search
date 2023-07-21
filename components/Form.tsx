@@ -19,7 +19,7 @@ function Form() {
 			return
 		}
 		try {
-			const res = await fetch('http://localhost:3000/api/companies', {
+			const res = await fetch(`${process.env.API_URL}/api/companies`, {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json',
