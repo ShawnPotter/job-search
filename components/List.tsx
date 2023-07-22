@@ -11,9 +11,11 @@ interface ICompany {
 
 const getCompanies = async () => {
 	try {
-		const res = await fetch(`${process.env.API_URL}/api/companies`, {
+		const res = await fetch(
+			`${process.env.API_URL}/api/companies` /* , {
 			cache: 'no-store',
-		})
+		} */
+		)
 		if (!res.ok) {
 			throw new Error('failed to fetch companies')
 		}
