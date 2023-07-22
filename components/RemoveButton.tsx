@@ -17,9 +17,12 @@ function RemoveButton({ id }: RemoveButtonProps) {
 	const deleteCompany = async () => {
 		const confirmed = confirm('Delete Company?')
 		if (confirmed) {
-			await fetch(`${process.env.API_URL}/api/companies?id=${id}`, {
-				method: 'DELETE',
-			})
+			await fetch(
+				`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/companies?id=${id}`,
+				{
+					method: 'DELETE',
+				}
+			)
 			handleHardRefresh()
 		}
 	}
