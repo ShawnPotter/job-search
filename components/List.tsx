@@ -13,10 +13,10 @@ interface ICompany {
 async function getCompanies() {
 	try {
 		const res = await fetch(
-			`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/companies`,
+			`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/companies` /* ,
 			{
 				cache: 'no-store',
-			}
+			} */
 		)
 		if (!res.ok) {
 			throw new Error('failed to fetch companies')
