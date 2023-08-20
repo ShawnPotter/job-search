@@ -1,3 +1,5 @@
+//TODO: Create "last visited" tracker
+
 import mongoose, { Schema } from 'mongoose'
 
 interface ICompany {
