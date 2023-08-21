@@ -19,16 +19,13 @@ function Form() {
 			return
 		}
 		try {
-			const res = await fetch(
-				`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/companies`,
-				{
-					method: 'POST',
-					headers: {
-						'Content-type': 'application/json',
-					},
-					body: JSON.stringify({ name, website }),
-				}
-			)
+			await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/companies`, {
+				method: 'POST',
+				headers: {
+					'Content-type': 'application/json',
+				},
+				body: JSON.stringify({ name, website }),
+			})
 			handleHardRefresh()
 		} catch (err) {
 			console.log(err)
