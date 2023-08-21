@@ -12,7 +12,7 @@ export async function GET() {
 	return NextResponse.json({ companies })
 }
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
 	const { name, website } = await req.json()
 	await connectDb()
 	await Company.create({ name, website })
