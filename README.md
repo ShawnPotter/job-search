@@ -1,34 +1,114 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Welcome
 
-## Getting Started
+This is a simple job search list application. The primary function of the application is for the user to input the company name and a url of their choice. My thought process is that you can go to a company website and apply what filters you want, which most career pages will display in the url, and then copy it and paste it into the URL input.
 
-First, run the development server:
+The application will submit the data to a MongoDB Atlas database and return the data to the list for use. Also displayed is a counter for when the page was last visited so you can make sure you stay on top of checking the companies you want work for. Edit and Delete buttons are also provided.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Current Application Status
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Currently the status is very much in development. The connection to MongoDB is only available on my localhost at the current time. The live production page shows the input fields but does not currently do anything.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Future Development
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Fully functional sign up, login, and logout functions.
 
-## Learn More
+   This is mostly finished but not quite done yet.
 
-To learn more about Next.js, take a look at the following resources:
+1. Pagination to enable faster loading of the database.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   Hopefully reducing load times to under 10 seconds required by my hobby Vercel account. Other workarounds might be need to be investigated and implemented.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. Sample database for demonstration.
 
-## Deploy on Vercel
+   I would like to show off my work in a more proper manner so there will be a sample database in the public facing version. I'm unsure how I want to approach this however because just allowing everyone and anyone, even if they sign up for an account, to add items to the list is a potential minefield and would naturally require moderation of varying degrees. Likely submitting, editing and deleting entries will be disabled on the public version to avoid abuse. I'm currently formulating strategies to handle this.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Individual account lists.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   If implemented, this will be a much later addition because it is outside the scope of the original project idea (which was just to make sure I was keeping on top of my job hunting).
+
+### Technologies
+
+Next.js, React, Typescript, MongoDB, Vercel
+
+## Running the Next.js Project Locally
+
+To run this Next.js project locally on your computer, follow these steps (this is a brief step by step and is assuming you have some previous experience forking and installing repositories):
+
+### 1. Fork the Repository
+
+1. Click the "Fork" button at the top right corner of this repository. This will create a copy of the repository in your GitHub account.
+
+### 2. Clone the Repository
+
+1. Open your terminal or command prompt.
+
+2. Navigate to the directory where you want to store the project by using the `cd` command.
+
+   ```shell
+   cd your/preferred/directory
+   ```
+
+3. Clone the repository by running the following command, replacing `<your-username>` with your GitHub username:
+
+   ```shell
+   git clone https://github.com/<your-username>/repository-name.git
+   ```
+
+### 3. Connect the Repository to Your IDE
+
+Choose your preferred Integrated Development Environment (IDE) to connect to the project. I recommend Visual Studio Code:
+
+#### Visual Studio Code (VS Code)
+
+1. Open VS Code.
+
+2. Click on "File" > "Open Folder..." and select the folder where you cloned the repository.
+
+### 4. Install Dependencies
+
+1. Open the visual studio terminal.
+
+2. Navigate to the project directory (the one you cloned in step 2) using the `cd` command if needed (shouldn't need to).
+
+3. Run the following command to install project dependencies:
+
+   ```shell
+   npm install
+   ```
+
+## 5. Configure Environment Variables
+
+1. In the root directory of your cloned project, create a file named `.env.local` if it doesn't already exist.
+
+2. Open the `.env.local` file in the editor of your choice.
+
+3. Add the following environment variables to the file:
+
+   ```js
+   MONGODB_URI = 'your-mongodb-uri'
+   NEXT_PUBLIC_VERCEL_URL = 'http://localhost:3000'
+   NEXTAUTH_URL = 'http://localhost:3000'
+   NEXTAUTH_SECRET = 'your-secret-key'
+   ```
+
+   - Replace `your-mongodb-uri` with the actual MongoDB connection URI you intend to use for your project.
+   - Ensure that `NEXT_PUBLIC_VERCEL_URL` and `NEXTAUTH_URL` are both set to `http://localhost:3000` for local development.
+   - Replace `your-secret-key` with a strong and secure secret key for NextAuth.js authentication.
+
+4. Save the `.env.local` file.
+
+These environment variables are essential for configuring your Next.js project to work with MongoDB and NextAuth.js locally. Be sure not to share your secret key or sensitive information in your version control system. Always keep these values private.
+
+### 6. Run the Development Server
+
+1. After installing dependencies, you can start the development server by running the following command:
+
+   ```shell
+   npm run dev
+   ```
+
+2. The Next.js application should now be running locally. You can access it in your web browser by navigating to `http://localhost:3000`.
+
+That's it! You've should have successfully set up and run the Next.js project locally on your machine.
+
+**If you run into any issues regarding setup please create an issue and I'll help you through the setup.**
