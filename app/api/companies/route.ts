@@ -7,21 +7,33 @@ export const runtime = 'nodejs'
 export const preferredRegion = 'pdx1'
 
 export async function GET() {
-	await connectDb()
-	const companies = await Company.find()
-	return NextResponse.json({ companies })
+	try {
+		await connectDb()
+		const companies = await Company.find()
+		return NextResponse.json({ companies })
+	} catch (err) {
+		console.log(err)
+	}
 }
 
 export async function POST(req: NextRequest) {
-	const { name, website } = await req.json()
-	await connectDb()
-	await Company.create({ name, website })
-	return NextResponse.json({ message: 'Company Added' }, { status: 201 })
+	try {
+		const { name, website } = await req.json()
+		await connectDb()
+		await Company.create({ name, website })
+		return NextResponse.json({ message: 'Company Added' }, { status: 201 })
+	} catch (err) {
+		console.log(err)
+	}
 }
 
 export async function DELETE(req: NextRequest) {
-	const id = req.nextUrl.searchParams.get('id')
-	await connectDb()
-	await Company.findByIdAndDelete(id)
-	return NextResponse.json({ message: 'Company deleted' }, { status: 200 })
+	try {
+		const id = req.nextUrl.searchParams.get('id')
+		await connectDb()
+		await Company.findByIdAndDelete(id)
+		return NextResponse.json({ message: 'Company deleted' }, { status: 200 })
+	} catch (err) {
+		console.log(err)
+	}
 }
