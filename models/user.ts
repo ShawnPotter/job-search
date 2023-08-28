@@ -16,7 +16,7 @@ const userSchema = new Schema<IUser>({
 		unique: true,
 		validate: [isEmail, 'Invalid Email'],
 	},
-	password: { type: String, required: true, select: false },
+	password: { type: String, required: true, select: true },
 })
 
 userSchema.pre('save', async function (next) {
