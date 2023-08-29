@@ -20,7 +20,7 @@ async function updateTime(_id: string) {
 	const newLastVisited = new Date()
 	console.log(newLastVisited)
 	try {
-		const req = await fetch(
+		await fetch(
 			`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/companies/visited/${_id}`,
 			{
 				method: 'PUT',
