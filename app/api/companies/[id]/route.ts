@@ -9,13 +9,23 @@ interface Params {
 
 export async function PUT(req: NextRequest, { params }: { params: Params }) {
 	try {
-		const { id } = params
+		const { id: _id } = params
 		const { newName: name, newWebsite: website } = await req.json()
 		await connectDb()
-		await Company.findByIdAndUpdate(id, { name, website })
-		return NextResponse.json({ message: 'Company updated' }, { status: 200 })
+		const res = await Company.findByIdAndUpdate(_id, { name, website })
+		if (!res || res.nModified === 0) {
+			// Handle the case where the company is not found or not updated
+			return NextResponse.json(
+				{ error: 'Company not found or not updated' },
+				{ status: 404 }
+			)
+		} else {
+			console.log('Company Updated')
+			return NextResponse.json({ message: 'Company updated' }, { status: 200 })
+		}
 	} catch (err) {
 		console.log(err)
+		return NextResponse.json({ error: 'An error occurred' }, { status: 500 })
 	}
 }
 
